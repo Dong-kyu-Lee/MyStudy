@@ -1,0 +1,7 @@
+E:\MyStudy\Game\Game2\bin\Debug\Game2.exe.config
+E:\MyStudy\Game\Game2\bin\Debug\Game2.exe
+E:\MyStudy\Game\Game2\bin\Debug\Game2.pdb
+E:\MyStudy\Game\Game2\obj\Debug\Game2.csprojAssemblyReference.cache
+E:\MyStudy\Game\Game2\obj\Debug\Game2.csproj.CoreCompileInputs.cache
+E:\MyStudy\Game\Game2\obj\Debug\Game2.exe
+E:\MyStudy\Game\Game2\obj\Debug\Game2.pdb
