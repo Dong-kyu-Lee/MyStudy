@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 enum BLOCKDIR
 {
-    T,
-    R,
-    B,
-    L
+    BD_T,
+    BD_R,
+    BD_B,
+    BD_L,
+    BD_MAX
 }
 
 enum BLOCKTYPE
@@ -20,29 +21,31 @@ enum BLOCKTYPE
     BT_Z, //번개모양
     BT_S, //번개모양
     BT_T, //T모양
-    BT_O  //네모
+    BT_O,  //네모
+    BT_MAX
 }
 
 partial class Block
 {
     int X = 0;
     int Y = 0;
-    List<List<BK>> BlockData = new List<List<BK>>();
+    BLOCKDIR Dir = BLOCKDIR.BD_T; // 회전 기능
+    string[][] Arr = null;
+    //List<List<BK>> BlockData = new List<List<BK>>();
 
     TetrisScreen Screen = null;
-    
+
     public Block(TetrisScreen _screen)
     {
         Screen = _screen;
+        Datalnit();
 
-        for(int y = 0; y < 4; ++y)
-        {
-            BlockData.Add(new List<BK>());
-            for(int x = 0; x < 4; x++)
-            {
-                BlockData[y].Add(BK.V);
-            }
-        }
+        SettingBlock(BLOCKTYPE.BT_T, BLOCKDIR.BD_R);
+    }
+
+    private void SettingBlock(BLOCKTYPE _Type, BLOCKDIR _Dir)
+    {
+        Arr = AllBlock[(int)_Type][(int)_Dir];
     }
 
     private void Input()
@@ -70,6 +73,15 @@ partial class Block
     public void Move()
     {
         Input();
-        Screen.SetBlock(Y, X, "■");
+        
+        for(int y = 0; y < 4; ++y)
+        {
+            for(int x= 0; x < 4; ++x)
+            {
+                if (Arr[y][x] == "□")
+                    continue;
+                Screen.SetBlock(Y + y, X + x, Arr[y][x]);
+            }
+        }
     }
 }
